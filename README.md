@@ -12,6 +12,7 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
 ```
 
 ## Basic usage examples
+![example basic usage](https://raw.githubusercontent.com/kpym/tikz-nicepoints/master/examples/nicepoints-example-basic.png)
 
 * `[point]` draws a point whose size is dependant of the current line width, whose "border" color is the salme as the text color.
    - custom size :
@@ -24,11 +25,12 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
     1. same as `[point]`
     2. name the point coordinates as `(A)`
     3. put the label `$A$` next to the point
-* `[point="A"']` makes the same (1) and (2), but without (3).
+* `[point="A"']` makes the same (1) and (2), but without (3). This is equivalent to [point]coordinate(A).
 * `[point="A"blue]` or `[point="A"{blue,below}]` set the style of the lable `$A$` to `[blue]` or `[blue,below]`.
 * `[point={label=$B$}]` is equivalent making 1) and 3), without 2).
 * `node[point,above]{$B$}` is the same as `[point] node[above]{$B$}`
 * `\point["A"red] at (1,1);` is the same as `\path (1,1) [point="A"red]`;
+
 
 ## More examples
 

@@ -1,0 +1,13 @@
+\documentclass[border=7pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{nicepoints}
+
+\begin{document}
+  \begin{tikzpicture}[thick]
+    \draw[yshift=0mm] (0,0) -- (1,0) [point] node[below,blue,font=\tt]{[point]}-- (2,0);
+    \draw[yshift=-7mm] (0,0) -- (1,0) [ultra thick,point=red] node[below,blue,font=\tt]{[ultra thick,point=red]}-- (2,0);
+    \draw[yshift=-14mm] (0,0) -- (1,0) [point={ultra thick,point fill=yellow}] node[below,blue,font=\tt]{[point=\{ultra thick,point fill=yellow\}]}-- (2,0);
+    \draw[yshift=-24mm] (-1.5,0) [point="A"left] node[below,blue,font=\tt]{[point="A"left]}-- (1,0) [point="B"] node[below,blue,font=\tt]{[point="B"]}-- (3.5,0) [point="C"*] node[below,blue,font=\tt]{[point="C"*]};
+    \point["P"red] at (1,-35mm) node[below,blue,font=\tt]{\textbackslash point["P"red] at (1,0);};
+  \end{tikzpicture}
+\end{document}

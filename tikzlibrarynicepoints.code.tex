@@ -22,7 +22,7 @@
 %       2) name the point coordinates as (A)
 %       3) put the label "$A$" next to the point
 %
-%   [point="A"'] makes the same 1) and 2), but without 3)
+%   [point="A"*] or [point="A"'] makes the same 1) and 2), but without 3). This is equivalent to [point]coordinate(A).
 %
 %   [point="A"blue] or [point="A"{blue,below}] set the style of the lable "$A$" to [blue] or [blue,below]
 %
@@ -34,8 +34,9 @@
 %
 %   If you use a special font whose makes the points ugly, you can reset the point font by
 %     [lmpoint] (here "lm" is for "Latin Modern").
+\typeout{tikz-nicepoints v1.1}
 
-
+% some additional libraries used by this one
 \usetikzlibrary{quotes}
 
 % This library puts the points on the "points" layer
@@ -44,25 +45,34 @@
 
 % All styles
 \tikzset{
-  set point size/.code={\pgfmathsetmacro{\pointsize}{sqrt(\pgflinewidth)}},
-  point size/.style={set point size/.prefix style={line width=#1}},
-  every dot/.style = {inner sep=0, outer sep=0,font=},
-  outer dot/.style = {every dot, scale=2.5*\pointsize},
-  inner dot/.style = {every dot, scale=\pointsize, text=#1}, inner dot/.default={white},
-  point fill/.style = {inner dot/.default={#1}},
+  /nice points/set point size/.code={\pgfmathsetmacro{\pointsize}{sqrt(\pgflinewidth)}},
+  point size/.style={/nice points/set point size/.prefix style={line width=#1}},
+  /nice points/reset dot/.style = {inner sep=0, outer sep=0,font=},
+  /nice points/outer dot/.style = {/nice points/reset dot, scale=2.5*\pointsize,every dot/.try},
+  /nice points/inner dot/.style = {/nice points/reset dot, scale=\pointsize,every dot/.try, text=#1}, /nice points/inner dot/.default={white},
+  point fill/.style = {/nice points/inner dot/.default={#1}},
   point coordinate/.style={insert path={coordinate(#1)}},
-  quotes mean point/.style={'/.style={empty label/.style={node contents=}},
+  quotes mean point/.style={
     node quotes mean/.try={point coordinate=##1,
       label={[direction shorthands, every label quotes/.try, ##2,
-        node contents=\ensuremath{##1}, empty label/.try]}}},
-  point/.style={quotes mean point, insert path={
-      node[inner sep=0, overlay, every point/.try, #1, set point size,
+        node contents=\ensuremath{##1}, empty label/.try]}
+    },
+    '/.style={empty label/.style={node contents=}},
+    */.style='
+  },
+  point/.style={quotes mean point,
+    insert path={
+      node[inner sep=0, overlay, every point/.try, #1, /nice points/set point size,
         path picture={
           \begin{pgfonlayer}{points}
-            \node[outer dot]{.} node[inner dot]{.};
+            \node[/nice points/outer dot]{.} node[/nice points/inner dot]{.};
           \end{pgfonlayer}
         }]{}
     }
+  },
+  lmpoint/.style={
+    /nice points/every dot/.style={inner sep=0, outer sep=0,
+      node font=\usefont{T1}{lmr}{m}{n}\fontsize{10pt}{0pt}\selectfont}
   }
 }
 
