@@ -22,10 +22,10 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
         * `[red,point]` or `[point=red]` draw the point in red
         * `[point fill=yellow, point]` or `[point={point fill=yellow}]` fill the point in yellow (the default is white)
 * `[point="A"]` makes 3 things :
-    1. same as `[point]`
-    2. name the point coordinates as `(A)`
-    3. put the label `$A$` next to the point
-* `[point="A"']` makes the same (1) and (2), but without (3). This is equivalent to [point]coordinate(A).
+  * (1) same as `[point]`
+  * (2) name the point coordinates as `(A)`
+  * (3) put the label `$A$` next to the point
+* `[point="A"*]` or `[point="A"']` makes the same (1) and (2), but without (3). This is equivalent to [point]coordinate(A).
 * `[point="A"blue]` or `[point="A"{blue,below}]` set the style of the lable `$A$` to `[blue]` or `[blue,below]`.
 * `[point={label=$B$}]` is equivalent making 1) and 3), without 2).
 * `node[point,above]{$B$}` is the same as `[point] node[above]{$B$}`
@@ -36,12 +36,17 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
 
 * Example 1 
 ```latex
-\documentclass[border=7mm]{standalone}
+\documentclass[border=7pt]{standalone}
 \usepackage{tikz}
 \usetikzlibrary{nicepoints}
 
 \begin{document}
-  \begin{tikzpicture}
+  \begin{tikzpicture}[thick]
+    \draw[yshift=0mm] (0,0) -- (1,0) [point] node[below,blue,font=\tt]{[point]} -- (2,0);
+    \draw[yshift=-7mm] (0,0) -- (1,0) [ultra thick,point=red] node[below,blue,font=\tt]{[ultra thick,point=red]} -- (2,0);
+    \draw[yshift=-14mm] (0,0) -- (1,0) [point={ultra thick,point fill=yellow}] node[below,blue,font=\tt]{[point=\{ultra thick,point fill=yellow\}]} -- (2,0);
+    \draw[yshift=-24mm] (-1.5,0) [point="A"left] node[below,blue,font=\tt]{[point="A"left]}-- (1,0) [point="B"] node[below,blue,font=\tt]{[point="B"]} -- (3.5,0) [point="C"*] node[below,blue,font=\tt]{[point="C"*]};
+    \point["P"red] at (1,-35mm) node[below,blue,font=\tt]{\textbackslash point["P"red] at (1,0);};
   \end{tikzpicture}
 \end{document}
 ```
