@@ -51,3 +51,6 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
 \end{document}
 ```
 ![example 1](https://raw.githubusercontent.com/kpym/tikz-nicepoints/master/examples/nicepoints-example1.png)
+
+## Reset font
+If the current font has a dot that is not well centered, you can reset the font used by `[point]` to be Latin Modern by adding the style `[lmpoint]`.
