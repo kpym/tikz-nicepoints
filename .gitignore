@@ -1,0 +1,45 @@
+# LaTeX
+# -----
+*.aa?
+*.acn
+*.acr
+*.alg
+*.aux
+*.bak
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.prj
+*.ps
+*.snm
+*.synctex
+*.synctex.gz
+*.tdo
+*.tmp
+*.toc
+*.vrb
+*.xdy
+
+# work folder
+# -----------
+work
+tex-sx
+examples/tikzlibrarynicepoints.code.tex
