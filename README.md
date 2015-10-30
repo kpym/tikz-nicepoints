@@ -41,12 +41,12 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
 \usetikzlibrary{nicepoints}
 
 \begin{document}
-  \begin{tikzpicture}[thick]
-    \draw[yshift=0mm] (0,0) -- (1,0) [point] node[below,blue,font=\tt]{[point]} -- (2,0);
-    \draw[yshift=-7mm] (0,0) -- (1,0) [ultra thick,point=red] node[below,blue,font=\tt]{[ultra thick,point=red]} -- (2,0);
-    \draw[yshift=-14mm] (0,0) -- (1,0) [point={ultra thick,point fill=yellow}] node[below,blue,font=\tt]{[point=\{ultra thick,point fill=yellow\}]} -- (2,0);
-    \draw[yshift=-24mm] (-1.5,0) [point="A"left] node[below,blue,font=\tt]{[point="A"left]} -- (1,0) [point="B"] node[below,blue,font=\tt]{[point="B"]} -- (3.5,0) [point="C"*] node[below,blue,font=\tt]{[point="C"*]};
-    \point["P"red] at (1,-35mm) node[below,blue,font=\tt]{\textbackslash point["P"red] at (1,0);};
+  \begin{tikzpicture}[scale=2]
+    \draw[fill=yellow!30,very thick]
+      (0,0) [point="A"] -- (1,0) {[blue,point="B"right]}
+      -- node[red,point="C"*,left]{$\mathcal{C}$} (1,1) [point="D"{above,red}]
+      -- (0,1) [point={red,"E"}];
+    \draw[thick,purple] (E) -- (B) to[bend right] (D) edge[bend right] (C) [point=near start];
   \end{tikzpicture}
 \end{document}
 ```
