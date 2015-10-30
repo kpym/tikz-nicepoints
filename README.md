@@ -64,3 +64,12 @@ If you want to add your own layers, you have to add to this layer too, for examp
 
 ## Reset font
 If the current font has a dot that is not well centered, you can reset the font used by `[point]` to be Latin Modern by adding the style `[lmpoint]`.
+
+## License
+
+This file may be distributed and/or modified
+
+  1. under the LaTeX Project Public License and/or
+  2. under the GNU Public License.
+
+Both licenses are available in the LICENSES folder.
