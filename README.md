@@ -14,7 +14,7 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
 ## Basic usage examples
 ![example basic usage](https://raw.githubusercontent.com/kpym/tikz-nicepoints/master/examples/nicepoints-example-basic.png)
 
-* `[point]` draws a point whose size is dependant of the current line width, whose "border" color is the salme as the text color.
+* `[point]` draws a point whose size is dependent of the current line width, whose "border" color is the salme as the text color.
    - custom size :
         * `[thick,point]` or `[point=thick]` set the point to the size corresponding to "thick" line;
         * `[point size=4pt,point]` or `[point={point size=4pt}]` set the point to the size corresponding to 4pt line.
@@ -26,7 +26,7 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
   * (2) name the point coordinates as `(A)`
   * (3) put the label `$A$` next to the point
 * `[point="A"*]` or `[point="A"']` makes the same (1) and (2), but without (3). This is equivalent to [point]coordinate(A).
-* `[point="A"blue]` or `[point="A"{blue,below}]` set the style of the lable `$A$` to `[blue]` or `[blue,below]`.
+* `[point="A"blue]` or `[point="A"{blue,below}]` set the style of the label `$A$` to `[blue]` or `[blue,below]`.
 * `[point={label=$B$}]` is equivalent making 1) and 3), without 2).
 * `node[point,above]{$B$}` is the same as `[point] node[above]{$B$}`
 * `\point["A"red] at (1,1);` is the same as `\path (1,1) [point="A"red]`;
@@ -51,6 +51,16 @@ This code is similar to this [TeX.SX answer](http://tex.stackexchange.com/a/2207
 \end{document}
 ```
 ![example 1](https://raw.githubusercontent.com/kpym/tikz-nicepoints/master/examples/nicepoints-example1.png)
+
+## Layers
+This library declare one additional layer called `points` , and draws all points in this layer. 
+This layer sits above the main layer, so even if a point is drawn before some line, it remains visible.
+
+If you want to add your own layers, you have to add to this layer too, for example like this 
+
+```latex
+\pgfsetlayers{background,main,foreground,points}
+```
 
 ## Reset font
 If the current font has a dot that is not well centered, you can reset the font used by `[point]` to be Latin Modern by adding the style `[lmpoint]`.

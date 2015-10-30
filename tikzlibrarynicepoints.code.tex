@@ -7,7 +7,7 @@
 %
 % How to use it (by examples) :
 %
-%   [point] draws a point whose size is dependant of the current line width, whose "border" color is the salme as the text color,
+%   [point] draws a point whose size is dependent of the current line width, whose "border" color is the salme as the text color,
 %
 %   - custom size :
 %     [thick,point] or [point=thick] set the point to the size corresponding to "thick" line
@@ -24,7 +24,7 @@
 %
 %   [point="A"*] or [point="A"'] makes the same 1) and 2), but without 3). This is equivalent to [point]coordinate(A).
 %
-%   [point="A"blue] or [point="A"{blue,below}] set the style of the lable "$A$" to [blue] or [blue,below]
+%   [point="A"blue] or [point="A"{blue,below}] set the style of the label "$A$" to [blue] or [blue,below]
 %
 %   [point={label=$B$}] is equivalent making 1) and 3), without 2).
 %
@@ -76,5 +76,5 @@
   }
 }
 
-% The following macro allows you tu use \point["A"] at (1,1);
+% The following macro allows you to use \point["A"] at (1,1);
 \def\point[#1]#2at#3(#4){\path (#4) [point={#1}]}
