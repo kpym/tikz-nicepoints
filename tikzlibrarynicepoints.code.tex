@@ -51,7 +51,7 @@
   /nice points/outer dot/.style = {/nice points/reset dot, scale=2.5*\pointsize,every dot/.try},
   /nice points/inner dot/.style = {/nice points/reset dot, scale=\pointsize,every dot/.try, text=#1}, /nice points/inner dot/.default={white},
   point fill/.style = {/nice points/inner dot/.default={#1}},
-  point coordinate/.style={insert path={coordinate(#1)}},
+  point coordinate/.style={label={[coordinate,name=#1]center:}},
   quotes mean point/.style={
     node quotes mean/.try={point coordinate=##1,
       label={[direction shorthands, every label quotes/.try, ##2,
