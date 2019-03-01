@@ -1,4 +1,4 @@
-% Copyright 2015 by Kpym
+% Copyright 2015-2019 by Kpym
 %
 % This file may be distributed and/or modified
 %
@@ -34,7 +34,7 @@
 %
 %   If you use a special font whose makes the points ugly, you can reset the point font by
 %     [lmpoint] (here "lm" is for "Latin Modern").
-\typeout{tikz-nicepoints v1.1}
+\typeout{tikz-nicepoints v1.2}
 
 % some additional libraries used by this one
 \usetikzlibrary{quotes}
@@ -42,6 +42,9 @@
 % This library puts the points on the "points" layer
 \pgfdeclarelayer{points}
 \pgfsetlayers{main,points}
+
+% To show or not the point label
+\newif\ifshowlabel
 
 % All styles
 \tikzset{
@@ -52,15 +55,15 @@
   /nice points/inner dot/.style = {/nice points/reset dot, scale=\pointsize,every dot/.try, text=#1}, /nice points/inner dot/.default={white},
   point fill/.style = {/nice points/inner dot/.default={#1}},
   point coordinate/.style={label={[coordinate,name=#1]center:}},
+  /nice point/show label/.is if=showlabel,
   quotes mean point/.style={
     node quotes mean/.try={point coordinate=##1,
-      label={[direction shorthands, every label quotes/.try, ##2,
-        node contents=\ensuremath{##1}, empty label/.try]}
+      label={[direction shorthands, every label quotes/.try, /nice point/show label, ##2]{\ifshowlabel\ensuremath{##1}\fi}}
     },
-    '/.style={empty label/.style={node contents=}},
+    '/.style={/nice point/show label=false},
     */.style='
   },
-  point/.style={quotes mean point,
+  point/.style={quotes mean point,/nice point/show label,
     insert path={
       node[inner sep=0, overlay, every point/.try, #1, /nice points/set point size,
         path picture={
